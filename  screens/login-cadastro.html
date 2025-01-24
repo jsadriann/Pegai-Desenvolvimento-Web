@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../assets/CSS/login-cadastro.css">
+</head>
+<body>
+    <main class="main-conteiner">
+        <section class="login-info section-conteiner">
+            <h2>Bem-vindo</h2>
+            <img src="../assets/IMG/login-info.png">
+            <h3>Pegai</h3>
+            <p>aqui tem um pequeno texto falando de forma simples o que 
+                o pegaí fornesse
+            </p>
+            <div>
+                <button>Registrar</button>
+                <button>Entrar</button>
+            </div>
+        </section>
+        <div class="form-conteiner">
+            <form action="" method="post" class="form-login" novalidate>
+                <div>
+                    <h2>Login</h2>
+                    <label for="user">Usuario</label>
+                    <input type="text" name="user" id="user">
+                    <label for="password">Senha</label>
+                    <input type="password" name="password-login" id="password-login">
+                    <div>
+                        <div>
+                            <input type="checkbox" name="remember" id="remember">
+                            <label for="remember">Lembre-me</label>
+                        </div>
+                        <a href="">Esqueci minha senha</a>
+                    </div>
+                    <button type="submit">Entrar</button>
+                </div>
+            </form>
+            <form action="" method="post" class="form-register" novalidate>
+                <div>
+                    <h2>Cadastro</h2>
+                    <label for="firsh-name">Nome</label>
+                    <input type="text" name="first-name" id="firsh-name">
+                    <label for="last-name">Sobrenome</label>
+                    <input type="text" name="last-name" id="last-name">
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" id="email">
+                    <label for="data-nascimento">Data de nascimento</label>
+                    <input type="date" name="data-nascimento" id="data-nascimento">
+                    <label for="password">Senha</label>
+                    <input type="password" name="password-registrar" id="password-registrar">
+                    <label for="password">Confirmar senha</label>
+                    <input type="password" name="password-registrar" id="password-registrar-verificar">
+                    <div>
+                        <div>
+                            <input type="checkbox" name="aceitar-termos" id="aceitar-termos">
+                            <label for="aceitar-termos">Eu li e aceito os termos de uso</label>
+                        </div>
+                        <a href="">Termos de uso</a>
+                    </div>
+                    <button type="submit">Registrar</button>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
