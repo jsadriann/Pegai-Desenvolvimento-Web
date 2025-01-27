@@ -176,25 +176,25 @@ Lista as tecnologias, frameworks e bibliotecas utilizados.
 
 
 ## header
-logo | menus| pesquisar | button login/ou button para perfil de usuario caso esteja logado
+  logo | menus| pesquisar | button login/ou button para perfil de usuario caso esteja logado
 
-logo: 
+1. logo: 
   Pegai transparente e link pra home
   
-header background: 
+2. header background: 
   primary-color
 
-menus:
+3. menus:
   categorias, menu suspenso que ira mostrar a categoria dos produtos
   perto de você, menu que irá listar itens da mesma cidade ou região
   suporte, menu que ira abrir um formulario para entrar em contato com o suporte
   sobre, menu que terá uma breve descrição sobre o projeto e seu proprosito
   
-pesquisar: 
+3. pesquisar: 
   um input que quando em focus irá cubrir o menu e de acordo com o ato de digitar irá abrir um modal
   com itens correspondentes com a pesquisa
 
-button usuario:
+4. button usuario:
   um botão que inicialmente será de login/cadastro mas que depois do usuario logar o botão irá ter seu
   estilo alterado para mostrar o avatar do usuario e logo do lado seu username. O botão por sua vez, ao ser
   clicado irá abrir o painel de usuario
