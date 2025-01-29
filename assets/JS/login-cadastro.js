@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+function initializeForm() {
     const regButton = document.getElementById('reg');
     const entButton = document.getElementById('ent');
 
@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const formEntrar = document.getElementById('form-entrar');
 
     const section = document.getElementById('form-color');
-    const main = document.getElementById('main');
+    const main = document.getElementById('teste');
 
     regButton.addEventListener('click', function() {
         formRegistrar.classList.remove('display-none');
@@ -32,4 +32,4 @@ document.addEventListener('DOMContentLoaded', function() {
         main.classList.remove('registrar-color');
         main.classList.add('login-color');
     });
-});
+}
