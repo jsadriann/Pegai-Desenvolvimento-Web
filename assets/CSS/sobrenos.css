@@ -6,9 +6,15 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    max-width: 80vw; /* Usa largura relativa */
+    max-width: 80vw;
     margin: auto;
-    padding-bottom: 3rem; /* Espaço para não sobrepor o carrossel */
+    padding-bottom: 3rem;
+}
+
+main {
+    display: block;
+    opacity: 1;
+    animation: slideIn 1s ease-out;
 }
 
 .sobre-texto {
@@ -38,9 +44,9 @@
 /* Estilo do Carrossel */
 .carousel {
     position: relative;
-    width: 80vw; /* Responsivo */
-    max-width: 900px; /* Máximo para telas grandes */
-    height: auto; /* Mantém a proporção */
+    width: 80vw;
+    max-width: 900px;
+    height: auto;
     margin: auto;
     overflow: hidden;
     border-radius: 10px;
@@ -118,7 +124,7 @@ button.carouse {
     z-index: 10;
 }
 
-button:hover {
+button.carouse:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
@@ -129,3 +135,5 @@ button:hover {
 .next {
     right: 10px;
 }
+
+

@@ -8,8 +8,11 @@
     --auxiliar-color: #45050C;
     --font-size: 2.5vh;
     --footer-primary-color: #5CCFE6;
+    --background-scrollbar: #00324936;
+    --color-scrollbar: #0032495b;
 }
 
+/* Global Styles */
 * {
     margin: 0;
     padding: 0;
@@ -18,16 +21,27 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body {
-    display: grid;
-    grid-template-rows: auto 1fr auto; /* Inclui espaço para header e footer */
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
 }
 
-main {
-    padding-top: 60px;
-    margin: 0 auto;
-    width: 100%;
-    overflow: hidden;
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-scrollbar);
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--color-scrollbar);
+}
+
+/* Body */
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 200vh;
 }
 
 /* Navbar */
@@ -43,15 +57,14 @@ main {
     height: 60px;
     padding: 0 2vw;
     box-sizing: border-box;
-    z-index: 1000; /* Garantia de que o header fica no topo */
+    z-index: 1000;
 }
 
-/* Menu */
 .menu {
     display: flex;
     gap: 1vw;
     height: inherit;
-    flex-grow: 1; 
+    flex-grow: 1;
     justify-content: flex-start;
     flex-wrap: wrap;
 }
@@ -65,7 +78,7 @@ main {
     max-width: 20vw;
     flex: 1 1 10vw;
     text-align: center;
-    white-space: rap;
+    white-space: wrap;
 }
 
 .menu li.hover a {
@@ -86,7 +99,7 @@ main {
 }
 
 .menu li.hover a:hover::after,
-.menu li.hover a.active::after {  /* Adicionado o estado ativo */
+.menu li.hover a.active::after {
     width: 100%;
 }
 
@@ -101,7 +114,6 @@ main {
     max-height: 70px;
 }
 
-/* Links */
 a {
     text-decoration: none;
     color: var(--secundary-color);
@@ -121,7 +133,7 @@ a {
     padding: 10px 15px;
     font-size: 16px;
     color: #333;
-    background-color:var(--secundary-color);
+    background-color: var(--secundary-color);
     border: 1px solid var(--registrar-color);
     border-radius: 30px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -129,7 +141,7 @@ a {
 }
 
 .search input:focus {
-    width: 40vw; 
+    width: 40vw;
     height: 30px;
     position: absolute;
     top: -15px;
@@ -146,7 +158,7 @@ a {
     font-style: italic;
 }
 
-/* Login Button */
+/* Login */
 #login {
     display: flex;
     align-items: center;
@@ -171,35 +183,46 @@ a {
     color: var(--primary-color);
 }
 
-/*footer*/
+/* Main */
+main {
+    padding-top: 60px;
+    margin: 0 auto;
+    width: 100%;
+    overflow: hidden;
+    flex-grow: 1;
+}
+
+/* Footer */
 #footer {
     background-color: var(--primary-color);
     color: var(--secundary-color);
-    padding: 40px 10px;
+    padding: 5% 2%;
     font-family: 'Poppins', sans-serif;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .footer-content {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; 
+    justify-content: space-around;
     align-items: flex-start;
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
-    gap: 40px;
+    gap: 3vw;
 }
 
 .footer-section {
     flex: 1 1 300px;
-    margin: 10px 0;
+    margin: 1vw 0;
     text-align: center;
+    max-width: 100%;
 }
 
 .footer-section h3 {
     font-size: 1.5em;
-    margin-bottom: 10px;
+    margin-bottom: 1vw;
     color: var(--footer-primary-color);
-    
 }
 
 .footer-section p,
@@ -238,19 +261,16 @@ a {
 }
 
 .footer-section:nth-of-type(3) ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
     display: flex;
-    flex-direction: row;
-    gap: 3vh;
-
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2vw;
+    margin: 0;
 }
 
 .footer-section:nth-of-type(3) ul li {
     display: flex;
     align-items: center;
-    margin-bottom: 8px;
 }
 
 .footer-section:nth-of-type(3) ul li i {
@@ -266,21 +286,20 @@ a {
 }
 
 .footer-section:nth-of-type(3) ul li a:hover {
-    color: var(--footer-primary-color); 
+    color: var(--footer-primary-color);
 }
 
-
-/* Mudança para as tecnologias ficarem lado a lado */
 .footer-section .tech-list {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 2vw;
+    flex-wrap: wrap;
 }
 
 .footer-section .tech-list li {
     display: flex;
     align-items: center;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 .footer-section .tech-list li i {
@@ -290,32 +309,31 @@ a {
 
 .footer-bottom {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 2vw;
     border-top: 1px solid var(--footer-primary-color);
-    padding-top: 10px;
+    padding-top: 1vw;
     font-size: 0.9em;
     color: var(--secundary-color);
 }
 
-/*modal do login cadastro*/
-body.modal-open {
+#footer, .footer-content {
+    width: 100%;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
+/* Modal */
 .modal {
     display: none;
     position: fixed;
-    z-index: 1000; /* Garantir que o modal fique acima de outros elementos */
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Cor de fundo semi-transparente */
+    background-color: rgba(0, 0, 0, 0.5);
     overflow: auto;
 }
-
-/* Conteúdo do modal */
-
 
 .close {
     color: #aaa;
@@ -333,5 +351,25 @@ body.modal-open {
     text-decoration: none;
 }
 
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) translateY(0);
+    }
+}

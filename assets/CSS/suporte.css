@@ -1,3 +1,4 @@
+/* Variáveis de Cores */
 :root {
     --primary-color: #003249;
     --secundary-color: #FCFFFC;
@@ -6,9 +7,9 @@
     --login-color: #035c21;
     --registrar-color: #003249;
     --auxiliar-color: #45050C;
-    --font-size: 18px;
     --footer-primary-color: #5CCFE6;
 }
+
 /* Reset e estilo base */
 * {
     margin: 0;
@@ -16,45 +17,50 @@
     box-sizing: border-box;
 }
 
-body {
+/* Estilos globais */
+main {
     background-color: var(--secundary-color);
     color: #333;
-    font-size: 16px;
+    font-size: var(--font-size);
+    display: block;
+    opacity: 1;
+    animation: slideIn 1s ease-out;
+}
+
+/* Foco nos inputs e textarea dentro do suporte */
+#suporte input:focus,
+#suporte textarea:focus {
+    outline: none;
+    border: 0.14em solid var(--primary-color);
 }
 
 /* Container do Suporte */
 #suporte {
     background-color: var(--secundary-color);
-    padding: 50px 30px;
+    padding: 5%;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    max-width: 1000px;
-    margin: 50px auto;
+    max-width: 80vw;
+    margin: 5vh auto;
 }
 
+/* Container genérico */
 .container {
-    width: 100%;
+    width: 90%;
     max-width: 900px;
     margin: 0 auto;
 }
 
 /* Título e Parágrafo Explicativo */
 h1 {
-    font-size: 36px;
-    margin-bottom: 15px;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
     text-align: center;
 }
 
-span.chat {
-    color: var(--auxiliar-color);
-    transition: color 0.3s ease;
-    text-decoration: none;
-    font-weight: bold;
-}
-
 p {
-    font-size: 18px;
-    margin-bottom: 30px;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
     text-align: center;
 }
 
@@ -62,26 +68,29 @@ p {
 .tabs {
     display: flex;
     justify-content: center;
-    margin-bottom: 30px;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .tab-btn {
     background-color: var(--button-registrar);
     color: var(--secundary-color);
-    padding: 14px 30px;
-    margin: 0 10px;
+    padding: 1rem 2rem;
     border: none;
     border-radius: 8px;
-    font-size: 18px;
+    font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-grow: 1;
+    min-width: 10rem;
 }
 
 .tab-btn i {
-    margin-right: 10px;
+    margin-right: 0.5rem;
+    transition: transform 0.6s ease, color 0.3s ease;
 }
 
 .tab-btn:hover {
@@ -93,45 +102,74 @@ p {
     background-color: var(--primary-color);
 }
 
-/* Seções de conteúdo */
-.faq-section h2{
-    padding-bottom: .5em;
+/* Animação no ícone do botão */
+.tab-btn:hover i {
+    transform: rotate(360deg);
+    color: #fff;
 }
-.faq-section, .form-contact, .chatbot-section {
+
+.tab-btn:hover span {
+    display: inline-block;
+    transform: rotateY(360deg); /* Rotação horizontal do texto */
+    transition: transform 0.6s ease; /* Transição suave */
+}
+
+span.chat {
+    color: var(--auxiliar-color);
+    transition: color 0.3s ease;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Seções de conteúdo */
+.faq-section h2 {
+    padding-bottom: 0.5em;
+}
+
+.faq-section,
+.form-contact,
+.chatbot-section {
     display: none;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
+    
 }
 
-.faq-section.active, .form-contact.active, .chatbot-section.active {
+.faq-section.active,
+.form-contact.active,
+.chatbot-section.active {
     display: block;
     opacity: 1;
 }
 
 /* FAQ */
+.faq-section {
+    padding-top: 2rem;
+}
+
 .faq-search-input {
     width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
     border: 1px solid var(--primary-color);
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 .faq-items {
-    margin-top: 10px;
+    margin-top: 1rem;
 }
 
 .faq-item {
     background-color: var(--secundary-color);
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .faq-question {
-    padding: 15px;
-    background-color: var(--secundary-color);
+    padding: 1rem;
     font-weight: bold;
     cursor: pointer;
     border-bottom: 1px solid #ddd;
@@ -144,7 +182,7 @@ p {
 }
 
 .faq-answer {
-    padding: 15px;
+    padding: 1rem;
     background-color: #fff;
     color: #555;
     display: none;
@@ -157,34 +195,36 @@ p {
 /* Formulário de Contato */
 .form-contact {
     background-color: #fff;
-    padding: 30px;
+    padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .form-contact label {
-    margin-top: 10px;
-    font-size: 16px;
+    margin-top: 0.5rem;
+    font-size: 1rem;
 }
 
-.form-contact input, .form-contact textarea {
-    padding: 12px;
-    margin-top: 8px;
+.form-contact input,
+.form-contact textarea {
+    padding: 0.8rem;
+    margin-top: 0.5rem;
     border-radius: 8px;
     border: 1px solid var(--primary-color);
     width: 100%;
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 .form-contact button {
-    margin-top: 20px;
+    margin-top: 1.5rem;
     background-color: var(--button-registrar);
     color: white;
-    padding: 12px 20px;
+    padding: 0.8rem 1rem;
     border: none;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 1rem;
     cursor: pointer;
+    width: 100%;
 }
 
 .form-contact button:hover {
@@ -194,29 +234,29 @@ p {
 /* Chatbot */
 .chatbot-section {
     background-color: #fff;
-    padding: 30px;
+    padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .chat-box {
     background-color: #f1f1f1;
-    padding: 15px;
+    padding: 1rem;
     border-radius: 8px;
-    margin-bottom: 20px;
-    max-height: 300px;
+    margin-bottom: 1.5rem;
+    max-height: 30vh;
     overflow-y: auto;
 }
 
 .chat-message {
-    margin: 10px 0;
-    font-size: 16px;
+    margin: 1rem 0;
+    font-size: 1rem;
 }
 
 #chat-input {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 10px;
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
     border-radius: 8px;
     border: 1px solid var(--primary-color);
 }
@@ -224,59 +264,14 @@ p {
 #chat-send {
     background-color: var(--button-registrar);
     color: white;
-    padding: 12px 20px;
+    padding: 0.8rem 1rem;
     border: none;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 1rem;
     cursor: pointer;
+    width: 100%;
 }
 
 #chat-send:hover {
     background-color: var(--primary-color);
 }
-
-#suporte input:focus, #suporte textarea:focus{
-    outline: none;
-    border: .14em solid var(--primary-color);
-
-}
-
-/* Animação de conteúdo chegando */
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px); /* Pode ajustar para X ou qualquer direção */
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-#suporte {
-    display: block;
-    opacity: 1;
-    animation: slideIn 1s ease-out; /* Lenta e suave */
-}
-
-/* Animação no ícone do botão */
-.tab-btn i {
-    transition: transform 0.6s ease, color 0.3s ease;
-}
-
-/* Animação no texto do botão */
-.tab-btn span {
-    display: inline-block;
-    transition: transform 0.6s ease; /* Transição suave */
-}
-
-/* Efeito de hover no botão */
-.tab-btn:hover i {
-    transform: rotate(360deg); /* Rotação completa do ícone */
-    color: #fff; /* Torna o ícone branco quando o botão for hover */
-}
-
-.tab-btn:hover span {
-    transform: rotateY(360deg); /* Rotação horizontal do texto */
-}
-

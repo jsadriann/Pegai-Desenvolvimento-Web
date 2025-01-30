@@ -24,24 +24,37 @@ document.addEventListener('DOMContentLoaded', function () {
         // Remove estilos e scripts antigos antes de carregar novos
         const existingLink = document.getElementById('dynamic-stylesheet');
         if (existingLink) existingLink.remove();
+        
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = `../assets/CSS/${page}.css`;
+        link.id = 'dynamic-stylesheet';
+        document.head.appendChild(link);
 
-        const existingScript = document.getElementById('dynamic-script');
-        if (existingScript) existingScript.remove();
+        // Verifica quando o CSS foi carregado
+        link.onload = function () {
+            console.log(`${page}.css carregado!`);
+            loadHTMLContent(page);
+        };
 
-        // Carrega o HTML
+        link.onerror = function () {
+            console.error(`Erro ao carregar o CSS ${page}.css!`);
+        };
+    }
+
+    function loadHTMLContent(page) {
+        const main = document.getElementById('main');
+
         fetch(`${page}.html`)
             .then(response => response.text())
             .then(html => {
+                // Adiciona o HTML após o CSS
                 main.innerHTML = html;
 
-                // Adiciona CSS dinâmico
-                const link = document.createElement('link');
-                link.rel = 'stylesheet';
-                link.href = `../assets/CSS/${page}.css`;
-                link.id = 'dynamic-stylesheet';
-                document.head.appendChild(link);
-
-                // Adiciona JavaScript dinâmico
+                // Carrega o script
+                const existingScript = document.getElementById('dynamic-script');
+                if (existingScript) existingScript.remove();
+                
                 const script = document.createElement('script');
                 script.src = `../assets/JS/${page}.js`;
                 script.id = 'dynamic-script';
@@ -49,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 script.onload = function () {
                     console.log(`${page}.js carregado!`);
 
-                    // Tenta chamar a função de inicialização correspondente
                     const functionName = `initialize${page.charAt(0).toUpperCase() + page.slice(1)}`;
                     if (typeof window[functionName] === 'function') {
                         console.log(`Chamando ${functionName}()`);
@@ -89,37 +101,49 @@ document.addEventListener('DOMContentLoaded', function () {
                 link.id = 'dynamic-login-stylesheet';
                 document.head.appendChild(link);
 
-                const existingScript = document.getElementById('dynamic-login-script');
-                if (existingScript) existingScript.remove();
-
-                let script = document.createElement('script');
-                script.src = '../assets/JS/login-cadastro.js';
-                script.id = 'dynamic-login-script';
-
-                script.onload = function() {
-                    console.log("Script login-cadastro.js carregado com sucesso!");
-
-                    if (typeof initializeForm === 'function') {
-                        console.log("Função initializeForm encontrada e executada!");
-                        initializeForm();
-                    } else {
-                        console.error("Erro: Função initializeForm não foi carregada!");
-                    }
+                // Verifica quando o CSS do modal foi carregado
+                link.onload = function () {
+                    console.log("login-cadastro.css carregado!");
+                    loadLoginScript();
                 };
 
-                script.onerror = function() {
-                    console.error("Erro ao carregar o script login-cadastro.js!");
+                link.onerror = function () {
+                    console.error("Erro ao carregar login-cadastro.css!");
                 };
-
-                document.body.appendChild(script);
             })
             .catch(error => console.log('Erro ao carregar o conteúdo:', error));
     });
 
+    function loadLoginScript() {
+        const existingScript = document.getElementById('dynamic-login-script');
+        if (existingScript) existingScript.remove();
+
+        let script = document.createElement('script');
+        script.src = '../assets/JS/login-cadastro.js';
+        script.id = 'dynamic-login-script';
+
+        script.onload = function () {
+            console.log("Script login-cadastro.js carregado com sucesso!");
+
+            if (typeof initializeForm === 'function') {
+                console.log("Função initializeForm encontrada e executada!");
+                initializeForm();
+            } else {
+                console.error("Erro: Função initializeForm não foi carregada!");
+            }
+        };
+
+        script.onerror = function () {
+            console.error("Erro ao carregar o script login-cadastro.js!");
+        };
+
+        document.body.appendChild(script);
+    }
+
     closeModalBtn.addEventListener('click', function () {
         modal.style.display = "none";
         document.body.classList.remove('modal-open');
-        modalContent.innerHTML = ''; 
+        modalContent.innerHTML = '';
 
         const existingLink = document.getElementById('dynamic-login-stylesheet');
         if (existingLink) existingLink.remove();
@@ -131,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
     modal.addEventListener('click', function (event) {
         if (!modalContent.contains(event.target) && event.target !== modalContent) {
             modal.style.display = "none";
-            modalContent.innerHTML = ''; 
+            modalContent.innerHTML = '';
 
             const existingLink = document.getElementById('dynamic-login-stylesheet');
             if (existingLink) existingLink.remove();
