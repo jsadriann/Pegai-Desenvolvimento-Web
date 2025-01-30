@@ -21,18 +21,49 @@ document.addEventListener('DOMContentLoaded', function () {
         const main = document.getElementById('main');
         main.innerHTML = '';
 
+        // Remove estilos e scripts antigos antes de carregar novos
         const existingLink = document.getElementById('dynamic-stylesheet');
         if (existingLink) existingLink.remove();
 
+        const existingScript = document.getElementById('dynamic-script');
+        if (existingScript) existingScript.remove();
+
+        // Carrega o HTML
         fetch(`${page}.html`)
             .then(response => response.text())
             .then(html => {
                 main.innerHTML = html;
+
+                // Adiciona CSS dinâmico
                 const link = document.createElement('link');
                 link.rel = 'stylesheet';
                 link.href = `../assets/CSS/${page}.css`;
                 link.id = 'dynamic-stylesheet';
                 document.head.appendChild(link);
+
+                // Adiciona JavaScript dinâmico
+                const script = document.createElement('script');
+                script.src = `../assets/JS/${page}.js`;
+                script.id = 'dynamic-script';
+
+                script.onload = function () {
+                    console.log(`${page}.js carregado!`);
+
+                    // Tenta chamar a função de inicialização correspondente
+                    const functionName = `initialize${page.charAt(0).toUpperCase() + page.slice(1)}`;
+                    if (typeof window[functionName] === 'function') {
+                        console.log(`Chamando ${functionName}()`);
+                        window[functionName]();
+                    } else {
+                        console.error(`Erro: Função ${functionName} não encontrada!`);
+                    }
+                };
+
+                script.onerror = function () {
+                    console.error(`Erro ao carregar ${page}.js!`);
+                };
+
+                document.body.appendChild(script);
             })
             .catch(err => {
                 main.innerHTML = '<p>Erro ao carregar conteúdo.</p>';
@@ -58,25 +89,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 link.id = 'dynamic-login-stylesheet';
                 document.head.appendChild(link);
 
-                // 🔥 Verificação de carregamento do script
                 const existingScript = document.getElementById('dynamic-login-script');
-                if (existingScript) {
-                    console.log("Script antigo removido!");
-                    existingScript.remove();
-                }
+                if (existingScript) existingScript.remove();
 
                 let script = document.createElement('script');
                 script.src = '../assets/JS/login-cadastro.js';
                 script.id = 'dynamic-login-script';
-                
-                // 🔥 Log para verificar se o script foi adicionado
+
                 script.onload = function() {
                     console.log("Script login-cadastro.js carregado com sucesso!");
-                    
-                    // Tenta executar a função
+
                     if (typeof initializeForm === 'function') {
                         console.log("Função initializeForm encontrada e executada!");
-                        initializeForm(); // Garantir que a função seja executada
+                        initializeForm();
                     } else {
                         console.error("Erro: Função initializeForm não foi carregada!");
                     }
@@ -94,35 +119,25 @@ document.addEventListener('DOMContentLoaded', function () {
     closeModalBtn.addEventListener('click', function () {
         modal.style.display = "none";
         document.body.classList.remove('modal-open');
-        modalContent.innerHTML = ''; // Remove completamente o conteúdo do modal
-        
-        // Remove o CSS e o JS relacionados ao login-cadastro
+        modalContent.innerHTML = ''; 
+
         const existingLink = document.getElementById('dynamic-login-stylesheet');
-        if (existingLink) {
-            existingLink.remove();
-        }
+        if (existingLink) existingLink.remove();
 
         const existingScript = document.getElementById('dynamic-login-script');
-        if (existingScript) {
-            existingScript.remove();
-        }
+        if (existingScript) existingScript.remove();
     });
 
     modal.addEventListener('click', function (event) {
         if (!modalContent.contains(event.target) && event.target !== modalContent) {
             modal.style.display = "none";
             modalContent.innerHTML = ''; 
-            
-            // Remove o CSS e o JS relacionados ao login-cadastro
+
             const existingLink = document.getElementById('dynamic-login-stylesheet');
-            if (existingLink) {
-                existingLink.remove();
-            }
+            if (existingLink) existingLink.remove();
 
             const existingScript = document.getElementById('dynamic-login-script');
-            if (existingScript) {
-                existingScript.remove();
-            }
+            if (existingScript) existingScript.remove();
         }
     });
 });

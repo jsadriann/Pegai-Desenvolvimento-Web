@@ -1,0 +1,60 @@
+<section id="suporte">
+    <div class="container">
+        <!-- Título e Parágrafo Explicativo -->
+        <h1>Suporte ao Cliente</h1>
+        <p>Consulte as respostas para suas dúvidas abaixo ou entre em contato com nossa equipe por meio do nosso formulário ou do <span class="chat">Iziel, nosso assistente virtual.</span></p>
+        
+        <!-- Barra de navegação com ícones -->
+        <div class="tabs">
+            <button id="faq-btn" class="tab-btn active-tab"><i class="fas fa-question-circle"></i> <span>FAQ</span></button>
+            <button id="contact-btn" class="tab-btn"><i class="fas fa-envelope"></i> <span>Contato</span></button>
+            <button id="chat-btn" class="tab-btn"><i class="fas fa-comment-dots"></i> <span>Chat</span></button>
+        </div>
+
+        <!-- Seção FAQ - Será exibida inicialmente -->
+        <section id="faq-section" class="faq-section active">
+            <h2><i class="fas fa-question-circle"></i> FAQ - Perguntas Frequentes</h2>
+            <input type="text" id="faq-search" placeholder="Pesquise por uma pergunta..." class="faq-search-input">
+            <div id="faq-items" class="faq-items">
+                <div class="faq-item">
+                    <div class="faq-question">Como posso cancelar meu pedido?</div>
+                    <div class="faq-answer">Você pode cancelar seu pedido dentro de 24 horas após a compra, entrando em contato com nossa central de atendimento.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Posso alterar o endereço de entrega?</div>
+                    <div class="faq-answer">Sim, é possível alterar o endereço de entrega antes de o pedido ser despachado. Entre em contato com nosso suporte.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Qual o prazo de entrega?</div>
+                    <div class="faq-answer">O prazo de entrega depende da sua localização, mas normalmente leva entre 5 a 10 dias úteis.</div>
+                </div>
+                <!-- Mais perguntas aqui -->
+            </div>
+        </section>
+
+        <!-- Seção de Contato -->
+        <section id="form-contato" class="form-contact">
+            <h2><i class="fas fa-envelope"></i> Entre em Contato</h2>
+            <form>
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Mensagem:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+
+        <!-- Seção de Chatbot -->
+        <section id="chatbot" class="chatbot-section">
+            <h2><i class="fas fa-comment-dots"></i> Chatbot</h2>
+            <div class="chat-box">
+                <div class="chat-message">Olá, sou Iziel seu assistente virtual. Como posso te ajudar hoje?</div>
+                <!-- A interação real do chatbot seria inserida aqui -->
+            </div>
+            <textarea id="chat-input" placeholder="Digite sua mensagem..."></textarea>
+            <button id="chat-send">Enviar</button>
+        </section>
+    </div>
+</section>

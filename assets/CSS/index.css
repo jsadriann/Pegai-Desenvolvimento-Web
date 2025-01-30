@@ -6,7 +6,7 @@
     --login-color: #035c21;
     --registrar-color: #003249;
     --auxiliar-color: #45050C;
-    --font-size: 18px;
+    --font-size: 2.5vh;
     --footer-primary-color: #5CCFE6;
 }
 
@@ -165,10 +165,10 @@ a {
 }
 
 #login button:hover {
-    background-color: var(--login-color);
+    background-color: var(--secundary-color);
     transform: scale(1.0);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    color: var(--secundary-color);
+    color: var(--primary-color);
 }
 
 /*footer*/
